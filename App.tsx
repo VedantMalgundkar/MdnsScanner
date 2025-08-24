@@ -35,8 +35,8 @@ function AppContent() {
         safeAreaInsets={safeAreaInsets}
       /> */}
       {/* <Text>Hii</Text> */}
-      <MdnsScanner></MdnsScanner>
-      {/* <BleScannerScreen></BleScannerScreen> */}
+      {/* <MdnsScanner></MdnsScanner> */}
+      <BleScannerScreen></BleScannerScreen>
     </View>
   );
 }
