@@ -95,3 +95,20 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+
+<key>NSBluetoothAlwaysUsageDescription</key>
+<string>This app uses Bluetooth to connect to devices.</string>
+<key>NSBluetoothPeripheralUsageDescription</key>
+<string>This app uses Bluetooth to connect to devices.</string>
+
+
+<!-- iOS 14+ Local Network Privacy -->
+<key>NSLocalNetworkUsageDescription</key>
+<string>This app uses the local network to discover and connect to HyperHDR devices.</string>
+
+<!-- Bonjour service types (must match what you scan) -->
+<key>NSBonjourServices</key>
+<array>
+    <string>_hyperhdr._tcp</string>
+</array>

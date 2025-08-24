@@ -6,7 +6,9 @@
  */
 
 import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
+import MdnsScanner from './screens/MdnsScanner';
+import BleScannerScreen from './screens/BleScannerScreen';
+import { StatusBar, StyleSheet, useColorScheme, View, Text } from 'react-native';
 import {
   SafeAreaProvider,
   useSafeAreaInsets,
@@ -28,10 +30,13 @@ function AppContent() {
 
   return (
     <View style={styles.container}>
-      <NewAppScreen
+      {/* <NewAppScreen
         templateFileName="App.tsx"
         safeAreaInsets={safeAreaInsets}
-      />
+      /> */}
+      {/* <Text>Hii</Text> */}
+      <MdnsScanner></MdnsScanner>
+      {/* <BleScannerScreen></BleScannerScreen> */}
     </View>
   );
 }
