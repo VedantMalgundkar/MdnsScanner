@@ -1,12 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { View, Text, FlatList, StyleSheet, Button } from 'react-native';
 import Zeroconf from 'react-native-zeroconf';
-import HyperhdrDiscoveryTile,{ HyperhdrDevice } from '../components/HyperhdrDiscoveryTile';
+import HyperhdrDiscoveryTile, { HyperhdrDevice } from '../components/HyperhdrDiscoveryTile';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
+import { RootStackParamList } from '../navigation';
+
+// ✅ Type the navigation hook
+type MdnsScannerNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'MdnsScanner'
+>;
 
 const zeroconf = new Zeroconf();
 
 export default function MdnsScanner() {
   const [services, setServices] = useState<Record<string, HyperhdrDevice>>({});
+  const navigation = useNavigation<MdnsScannerNavigationProp>();
 
   useEffect(() => {
     zeroconf.on('start', () => console.log('🔍 Scanning started'));
@@ -28,6 +39,10 @@ export default function MdnsScanner() {
 
   return (
     <View style={styles.container}>
+      <Button
+        title="Go to Dashboard"
+        onPress={() => navigation.navigate('MainDashBoard')}
+      />
       <Text style={styles.title}>mDNS HyperHDR Scanner</Text>
       <FlatList
         data={Object.values(services)}

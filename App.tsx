@@ -1,18 +1,12 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React from 'react';
+import { StatusBar, useColorScheme } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import Toast from 'react-native-toast-message';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import MdnsScanner from './screens/MdnsScanner';
-import BleScannerScreen from './screens/BleScannerScreen';
-import { StatusBar, StyleSheet, useColorScheme, View, Text } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+// ✅ Import your context provider
+import { ConnectionProvider } from './src/api/ConnectionContext';
+import { NavigationContainer } from '@react-navigation/native';
+import AppNavigator from './src/navigation';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -20,31 +14,16 @@ function App() {
   return (
     <SafeAreaProvider>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
+
+      {/* ✅ Wrap the app in ConnectionProvider */}
+      <ConnectionProvider>
+        <NavigationContainer>
+          <AppNavigator />
+        </NavigationContainer>
+        <Toast />
+      </ConnectionProvider>
     </SafeAreaProvider>
   );
 }
-
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      {/* <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      /> */}
-      {/* <Text>Hii</Text> */}
-      {/* <MdnsScanner></MdnsScanner> */}
-      <BleScannerScreen></BleScannerScreen>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
